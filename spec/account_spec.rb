@@ -23,7 +23,7 @@ describe Account do
       expect{subject.print_statement}.to output(header).to_stdout
     end
 
-    it "prints a statment of deposits and withdrawels with newest at the top" do
+    it "prints a statment of deposits and withdrawels with newest at the top correctly formatted" do
       deposit_amount = 600
       subject.deposit(deposit_amount)
       withdrawal_amount = 20.89
