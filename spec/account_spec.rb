@@ -11,4 +11,10 @@ describe Account do
     end
   end
 
+  describe "#withdraw" do
+    it "decreases the balance by amount given" do
+      expect{subject.withdraw(40)}.to change{subject.balance}.by(-40)
+    end
+  end
+
 end
