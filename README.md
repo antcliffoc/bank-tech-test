@@ -1,3 +1,4 @@
+![](https://travis-ci.org/antcliffoc/bank-tech-test.svg?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/5e6199a040d9a0dbab62/maintainability)](https://codeclimate.com/github/antcliffoc/bank-tech-test/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/5e6199a040d9a0dbab62/test_coverage)](https://codeclimate.com/github/antcliffoc/bank-tech-test/test_coverage)
 # Bank - Tech Test
 
 ## Specification
