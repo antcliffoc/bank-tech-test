@@ -8,12 +8,12 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    @statement.unshift("#{Time.now.strftime('%d/%m/%Y')} || #{'%.2f' % amount} || || #{'%.2f' % @balance}")
+    add_event(deposit_amount: amount)
   end
 
   def withdraw(amount)
     @balance -= amount
-    @statement.unshift("#{Time.now.strftime('%d/%m/%Y')} || || #{'%.2f' % amount} || #{'%.2f' % @balance}")
+    add_event(withdrawal_amount: amount)
   end
 
   def print_statement
@@ -21,5 +21,14 @@ class Account
     @statement.each { |event| p event }
   end
 
+  private
+
+  def add_event(deposit_amount: nil, withdrawal_amount: nil)
+    if (deposit_amount)
+      @statement.unshift("#{Time.now.strftime('%d/%m/%Y')} || #{'%.2f' % deposit_amount} || || #{'%.2f' % @balance}")
+    elsif (withdrawal_amount)
+      @statement.unshift("#{Time.now.strftime('%d/%m/%Y')} || || #{'%.2f' % withdrawal_amount} || #{'%.2f' % @balance}")
+    end
+  end
 
 end
