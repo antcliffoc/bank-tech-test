@@ -12,8 +12,18 @@ describe Account do
   end
 
   describe "#withdraw" do
-    it "decreases the balance by amount given" do
-      expect{subject.withdraw(40)}.to change{subject.balance}.by(-40)
+    context "account has insufficient funds" do
+      it "does not allow the user to withdraw" do
+        expect{subject.withdraw(10)}.to raise_error("Insufficient Funds")
+      end
+    end
+    context "account has sufficient funds" do
+      before do
+        subject.deposit(1000)
+      end
+      it "decreases the balance by amount given" do
+        expect{subject.withdraw(40)}.to change{subject.balance}.by(-40)
+      end
     end
   end
 

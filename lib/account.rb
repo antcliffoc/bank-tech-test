@@ -13,6 +13,7 @@ class Account
   end
 
   def withdraw(amount)
+    check_funds(amount)
     @balance -= amount
     add_event(withdrawal_amount: amount)
     return "£#{format_money(amount)} has been withdrawn from your account"
@@ -38,4 +39,7 @@ class Account
     "#{'%.2f' % amount}"
   end
 
+  def check_funds(amount)
+    raise "Insufficient Funds" if (@balance - amount) < 0
+  end
 end
