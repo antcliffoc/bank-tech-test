@@ -39,5 +39,5 @@ date || credit || debit || balance
 ![](./public/tests.png)  
 
 #### Considerations for edge cases
-> Users can currently become overdrawn by an infinite amount perhaps limit to 2000?  
+> Users cannot become overdrawn  
 ---
