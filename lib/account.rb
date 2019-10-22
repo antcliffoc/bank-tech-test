@@ -9,13 +9,13 @@ class Account
   def deposit(amount)
     @balance += amount
     add_event(deposit_amount: amount)
-    return "£#{amount} has been added to your account"
+    return "£#{format_money(amount)} has been added to your account"
   end
 
   def withdraw(amount)
     @balance -= amount
     add_event(withdrawal_amount: amount)
-    return "£#{amount} has been withdrawn from your account"
+    return "£#{format_money(amount)} has been withdrawn from your account"
   end
 
   def print_statement
@@ -28,10 +28,14 @@ class Account
 
   def add_event(deposit_amount: nil, withdrawal_amount: nil)
     if (deposit_amount)
-      @activity.unshift("#{Time.now.strftime('%d/%m/%Y')} || #{'%.2f' % deposit_amount} || || #{'%.2f' % @balance}")
+      @activity.unshift("#{Time.now.strftime('%d/%m/%Y')} || #{format_money(deposit_amount)} || || #{'%.2f' % @balance}")
     elsif (withdrawal_amount)
-      @activity.unshift("#{Time.now.strftime('%d/%m/%Y')} || || #{'%.2f' % withdrawal_amount} || #{'%.2f' % @balance}")
+      @activity.unshift("#{Time.now.strftime('%d/%m/%Y')} || || #{format_money(withdrawal_amount)} || #{'%.2f' % @balance}")
     end
+  end
+
+  def format_money(amount)
+    "#{'%.2f' % amount}"
   end
 
 end
