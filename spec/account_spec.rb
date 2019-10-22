@@ -17,4 +17,20 @@ describe Account do
     end
   end
 
+  describe "#print_statement" do
+    it "prints a header" do
+      header = "\"date || credit || debit || balance\"\n"
+      expect{subject.print_statement}.to output(header).to_stdout
+    end
+
+    it "prints a statment of deposits and withdrawels with newest at the top" do
+      deposit_amount = 600
+      subject.deposit(deposit_amount)
+      withdrawal_amount = 20.89
+      subject.withdraw(withdrawal_amount)
+      expected_statement ="\"date || credit || debit || balance\"\n\"#{Time.now.strftime('%d/%m/%Y')} || || #{withdrawal_amount} || 579.11\"\n\"#{Time.now.strftime('%d/%m/%Y')} || #{deposit_amount}.00 || || 600.00\"\n"
+      expect{subject.print_statement}.to output(expected_statement).to_stdout
+    end
+  end
+
 end
